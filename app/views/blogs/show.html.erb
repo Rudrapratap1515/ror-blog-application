@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div class="main">
+  <div class="card">
+    <div class="post">
+      <img class="post-image" src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"/>
+      
+      <div class="post-content">
+        <p class="post-header"> <span><%= @blog.title %></span></p>
+        <p class="post-text">
+          <%= @blog.body %>
+        </p>
+        <div class="author">
+          <img src="https://assets.codepen.io/2642098/internal/avatars/users/default.png?format=auto&height=80&version=1543776877&width=80" alt="" class="author-image">
+          <div class="author-content">
+            <p class="author-name"><%= @blog.member.name %></p>
+            <p class="date"><%= @blog.read_time %></p>
+            <p class="date"><%= @blog.category.name %></p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>

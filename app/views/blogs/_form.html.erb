@@ -1,0 +1,43 @@
+<%= form_with model: blog , :class => 'form' do |form| %>
+  <% if blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+        <% blog.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>Create Blog</h3>
+  <p type="Title:">
+    <%= form.text_field :title , :placeholder => 'Enter the Title of the Blog' %>
+  </p>
+
+  <p type="Read Time:">
+    <%= form.time_select :read_time%>
+  </p>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <p type="Blog Content:">
+    <%= form.text_area :body , :placeholder => 'Enter the Content of the Blog' %>
+  </p>
+
+  <p type="Category:">
+    <%= form.select :category_id, options_for_select(Category.all.map{|r|[r.name, r.id]}) %>
+  </p>
+
+  <p type="Member:">
+    <%= form.select :member_id, options_for_select(Member.all.map{|r|[r.name, r.id]}) %>
+  </p>
+
+  <div class="actions">
+    <%= form.submit "Create" , :class => 'form-button' %>
+  </div>
+<% end %>

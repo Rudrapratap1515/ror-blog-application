@@ -1,0 +1,21 @@
+<div class = "category-container m-5">
+    <div class="grid-shape">
+        <% if logged_in? && @current_user.role_id == 1 %>
+            <div class="category-outer-box">
+                <div class="category-inner-box">
+                    <%= link_to 'Members' , members_path , :class => "category-box-text" %>
+                </div>
+            </div>
+            <div class="category-outer-box">
+                <div class="category-inner-box">
+                    <%= link_to 'Category' , categories_path , :class => "category-box-text" %>
+                </div>
+            </div>
+        <% end %>
+        <div class="category-outer-box">
+            <div class="category-inner-box">
+                <%= link_to 'Blogs' , blogs_path , :class => "category-box-text" %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<div class="table-form">
+  <h3>All Blogs</h3>
+  <table class="my-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Read time</th>
+        <th>Image</th>
+        <th>Body</th>
+        <th>Category</th>
+        <th>Member</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @blogs.each do |blog| %>
+        <tr>
+          <td><%= blog.title %></td>
+          <td><%= blog.read_time %></td>
+          <td><%= blog.image %></td>
+          <td><%= blog.body %></td>
+          <td><%= blog.category.name %></td>
+          <td><%= blog.member.name %></td>
+          <td><%= link_to 'Show', blog %></td>
+          <% if logged_in? && @current_user.role_id == 1 || (@current_user.role_id == 2 && @current_user.id == blog.member_id) %>
+            <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+            <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Blog', new_blog_path %>

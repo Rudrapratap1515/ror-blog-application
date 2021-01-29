@@ -1,0 +1,46 @@
+<%= form_with model: member , :class => "form" do |form| %>
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+        <% member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>Create Member</h3>
+  <p type="Name:">
+    <%= form.text_field :name , :placeholder => 'Enter the Name of the Member' %>
+  </p>
+
+  <p type="Password:">
+    <%= form.password_field :password , :placeholder => 'Enter the Password of the Member' %>
+  </p>
+
+  <p type="E-mail:">
+    <%= form.text_field :email , :placeholder => 'Enter the E-mail of the Member' %>
+  </p>
+
+  <p type="Age:">
+    <%= form.number_field :age %>
+  </p>
+
+  <p type="Role:">
+    <%= form.select :role_id, options_for_select(Role.all.map{|r|[r.name, r.id]}) %>
+  </p>
+
+  <p type="Address:">
+    <%= form.text_field :address , :placeholder => 'Enter the Name of the Member' %>
+  </p>
+
+  <p type="Contact No.:">
+    <%= form.number_field :contact %>
+  </p>
+
+  <div class="actions">
+    <%= form.submit "Create" , :class => "form-button" %>
+  </div>
+<% end %>

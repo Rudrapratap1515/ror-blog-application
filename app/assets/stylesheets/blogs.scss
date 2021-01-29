@@ -1,0 +1,97 @@
+// Place all the styles related to the blogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main{
+    margin-bottom: 50px;
+
+    .card{
+        width: 90%;
+        min-height: 250px;
+        background: rgb(255,255,255);
+        background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(242,245,248,1) 35%, rgba(236,236,237,1) 100%);
+        box-shadow: 0 13px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        margin-left: 5%;
+        margin-top: 30px;
+        transition: background-color .5s, box-shadow .5s, margin-left .5s;
+        
+        &:hover{
+            margin-left: 8%;
+            background-color: #ffff;
+            box-shadow: 0 30px 30px rgba(0, 0, 0, 0.3);
+            transition: background-color .5s, box-shadow .5s, margin-left .5s;
+        }
+    
+        .post {
+            .post-image{
+                width: 200px;
+                height: 220px;
+                margin-top: 15px;
+                margin-left: 15px;
+                border-radius: 10px 10px 10px;
+                float: left;
+            }
+        
+            .post-content{
+                padding: 20px;
+                height: auto;
+                text-align: center;                
+                overflow: hidden;
+            
+                .post-header{
+                    font-size: 28px;
+                    font-family: 'Roboto', sans-serif;
+                    margin-top: 15px;
+                    color: #3B3C3F;
+                    margin-left: 10px;
+                    text-align: center;
+                  }
+                  .post-text{
+                    font-size: 15px;
+                    padding-left: 20px;
+                    color: #768CA4;
+                    font-family: 'Roboto', sans-serif;    
+                }
+            
+                .author{
+                    width: 60%;
+                    height: 60px;
+                    margin: auto;
+                    background-color: #F2F5F8;
+                    
+                    .author-content{
+                        width: 60%;
+                        height: 60px;
+                        margin-left: 10px;    
+                        float: left;
+                    
+                        .author-name{
+                            font-size: 20px;
+                            color: #3B3C3F;
+                            font-family: 'Roboto', sans-serif;
+                            font-weight: bold;
+                            margin-top: 10px;
+                            padding-left: 10px;
+                          }
+                          .date{
+                            font-size: 13px;
+                            font-family: 'Roboto', sans-serif;
+                            margin-top: -15px;
+                            padding-left: 10px;
+                          }
+                      }
+                      .author-image{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 100%;
+                        float: left;
+                        margin-left: 10px;
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+  
