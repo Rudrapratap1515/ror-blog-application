@@ -11,11 +11,18 @@
   </head>
 
   <body>
-    <%= link_to "BlogApp" , root_path , class: "header" %>
-    <% if logged_in? && @current_user.name %>
-      <%= link_to @current_user.name , my_blogs_index_path , class: "header float-right" %> <br/>
-      <%= link_to "Log out", logout_path , class: "float-right" , method: "delete" %> 
-    <% end %>
+    <div class="header">
+      <%= link_to "BlogApp" , root_path , class: "header" %>
+      <% if logged_in? && @current_user.name %>
+        <% if logged_in? && @current_user.role_id == 1 %>
+          <%= link_to 'Members' , members_path %>
+          <%= link_to 'Category' , categories_path %>
+        <% end %>
+        <%= link_to 'Blogs' , blogs_path %>
+        <%= link_to "Log out", logout_path , class: "float-right" , method: "delete" %>
+        <span class="float-right pr-5"><%= @current_user.name %></span>
+      <% end %>    
+    </div>
     <%= yield %>
   </body>
 </html>

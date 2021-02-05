@@ -7,6 +7,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
+    redirect_to sessions_new_path unless logged_in?
     @blogs = Blog.all
   end
 

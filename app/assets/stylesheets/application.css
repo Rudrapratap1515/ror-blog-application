@@ -14,6 +14,14 @@
  *= require_self
  */
 
- .float-right{
-     float: right;
- }
+.float-right{
+    float: right;
+}
+.header{
+    background-color: white;
+    width: 100%;
+    padding: 20px 0 20px 0px;
+}
+.pr-5{
+    padding-right: 5px;
+}
