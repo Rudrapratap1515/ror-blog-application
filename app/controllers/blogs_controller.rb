@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: %i[show edit update destroy]
+  # before_action :authentication
 
   # GET /blogs
   # GET /blogs.json
@@ -9,8 +12,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   # GET /blogs/1.json
-  def show
-  end
+  def show; end
 
   # GET /blogs/new
   def new
@@ -28,7 +30,7 @@ class BlogsController < ApplicationController
       if role_check == 2 && Blog.find(params[:id]).member_id == current_user.id
 
       elsif role_check == 1
-        
+
       else
         redirect_to blogs_path
       end
@@ -78,13 +80,14 @@ class BlogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog      
-      @blog = Blog.find(params[:id])      
-    end
 
-    # Only allow a list of trusted parameters through.
-    def blog_params
-      params.require(:blog).permit(:title, :read_time, :image, :body, :category_id, :member_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def blog_params
+    params.require(:blog).permit(:title, :read_time, :image, :body, :category_id, :member_id)
+  end
 end

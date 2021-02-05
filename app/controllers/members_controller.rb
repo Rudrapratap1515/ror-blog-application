@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: %i[show edit update destroy]
 
   # response.headers["X-AUTH-TOKEN"] = authenticity_token
   # GET /members
@@ -13,12 +15,9 @@ class MembersController < ApplicationController
     end
   end
 
-
-
   # GET /members/1
   # GET /members/1.json
-  def show
-  end
+  def show; end
 
   # GET /members/new
   def new
@@ -30,14 +29,12 @@ class MembersController < ApplicationController
   end
 
   # GET /members/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /members
   # POST /members.json
   def create
     @member = Member.new(member_params)
-    
 
     respond_to do |format|
       if @member.save
@@ -75,17 +72,18 @@ class MembersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_member
-      if role_check == 1
-        @member = Member.find(params[:id])
-      else
-        redirect_to blogs_path
-      end
-    end
 
-    # Only allow a list of trusted parameters through.
-    def member_params
-      params.require(:member).permit(:name, :password, :email, :age, :role_id, :address, :contact)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_member
+    if role_check == 1
+      @member = Member.find(params[:id])
+    else
+      redirect_to blogs_path
     end
+  end
+
+  # Only allow a list of trusted parameters through.
+  def member_params
+    params.require(:member).permit(:name, :password, :email, :age, :role_id, :address, :contact)
+  end
 end

@@ -33,9 +33,7 @@
     <%= form.select :category_id, options_for_select(Category.all.map{|r|[r.name, r.id]}) %>
   </p>
 
-  <p type="Member:">
-    <%= form.select :member_id, options_for_select(Member.all.map{|r|[r.name, r.id]}) %>
-  </p>
+  <%= form.hidden_field :member_id, :value => session[:current_user_id] %>
 
   <div class="actions">
     <%= form.submit "Create" , :class => 'form-button' %>

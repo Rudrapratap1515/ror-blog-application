@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 class BlogappController < ApplicationController
   def index
-    if !logged_in?
-      redirect_to sessions_new_path
-    end
+    redirect_to sessions_new_path unless logged_in?
   end
 end
