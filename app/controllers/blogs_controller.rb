@@ -26,13 +26,9 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1/edit
   def edit
-    if role_check == 1 || role_check == 2
+    if role_check != 3
       current_user = Member.find_by(id: session[:current_user_id])
-      if role_check == 2 && Blog.find(params[:id]).member_id == current_user.id
-
-      elsif role_check == 1
-
-      else
+      if role_check == 2 && Blog.find(params[:id]).member_id != current_user.id
         redirect_to blogs_path
       end
     else
